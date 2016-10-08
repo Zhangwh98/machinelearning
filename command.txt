@@ -1,0 +1,62 @@
+#Git common command
+
+mkdir learngit
+cd learngit
+#把这个目录变成Git可以管理的仓库
+git init
+
+#工作区（Working Directory）版本库（Repository）
+Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD
+
+#提交
+git add readme.txt file2.txt file3.txt 			git add .
+git commit -m "wrote a readme file"
+
+#看看仓库的当前状态
+git status
+#查看difference
+git diff readme.txt
+
+#显示从最近到最远的提交日志
+git log --pretty=oneline
+
+#回退 HEAD~100 HEAD代表当前版本
+git reset --hard HEAD^
+#查看命令历史，以便确定要回到未来的哪个版本
+git reflog
+
+#查看工作区和版本库里面最新版本的区别
+git diff HEAD -- readme.txt
+
+#打开Shell（Windows下打开Git Bash），创建SSH Key
+ssh-keygen -t rsa -C "youremail@example.com"
+
+#
+git config --list
+git config --unset --global http.proxy
+
+#上传github
+git remote add origin git@github.com:Zhangwh98/learngit.git
+#仓库为空，第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令
+git push -u origin master
+git push origin master
+#git clone
+git clone git@github.com:Zhangwh98/gitskills.git
+#GitHub还可以用https://github.com/michaelliao/gitskills.git实际上，Git支持多种协议，默认的git://使用ssh，但也可以使用https等其他协议。
+#使用https除了速度慢以外，还有个最大的麻烦是每次推送都必须输入口令，但是在某些只开放http端口的公司内部就无法使用ssh协议而只能用https。
+
+#分支管理
+#查看分支
+git branch
+#创建分支
+git branch <name> 		如: git branch dev
+#切换分支
+git checkout <name>		如: git branch master
+#创建+切换分支
+git checkout -b <name>	如: git checkout -b dev
+#合并某分支到当前分支
+git merge <name>		如: git merge dev
+#删除分支
+git branch -d <name>	如: git branch -d dev
+#看到分支合并图
+git log --graph   		git log --graph --pretty=oneline --abbrev-commit
