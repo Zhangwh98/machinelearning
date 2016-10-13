@@ -60,3 +60,29 @@ git merge <name>		如: git merge dev
 git branch -d <name>	如: git branch -d dev
 #看到分支合并图
 git log --graph   		git log --graph --pretty=oneline --abbrev-commit
+
+#.gitignore文件
+
+# Windows:
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Python:
+*.py[cod]
+*.so
+*.egg
+*.egg-info
+dist
+build
+
+# My configurations:
+db.ini
+deploy_key_rsa
+
+#用-f强制添加到Git
+git add -f App.class
+#用git check-ignore命令检查
+git check-ignore -v App.class
+#如：“.gitignore:3:*.class    App.class”表示第3行规则忽略了该文件
+
